@@ -14,16 +14,35 @@ class TicTacToeNode
 
 
 
-  def losing_node?(evaluator)
-    self.board.over? 
+  def losing_node?(evaluator) #:o
+    if board.over? 
+      
+      return board.won? && board.winner != evaluator
+    end  
 
+    if self.next_mover_mark == evaluator 
 
+      self.children.all? {|kids| kids.losing_node?(evaluator)}
+    else   
+      
+
+      self.children.any? {|kids| kids.losing_node?(evaluator)}
+    end
   end
 
   def winning_node?(evaluator)
+     if board.over? 
+      
+      return board.won? && board.winner == evaluator
+    end 
 
-
-
+    if self.next_mover_mark == evaluator 
+      
+      self.children.any? {|kids| kids.winning_node?(evaluator)}
+    else
+      
+      self.children.all? {|kids| kids.winning_node?(evaluator)}
+    end
 
   end
 
