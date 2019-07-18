@@ -1,6 +1,5 @@
 require_relative 'tic_tac_toe'
 
-
 class TicTacToeNode
   def initialize(board, next_mover_mark, prev_move_pos = nil)
     @board, @next_mover_mark, @prev_move_pos = 
@@ -33,7 +32,7 @@ class TicTacToeNode
   def winning_node?(evaluator)
      if board.over? 
       
-      return board.won? && board.winner == evaluator
+      return board.winner == evaluator
     end 
 
     if self.next_mover_mark == evaluator 
