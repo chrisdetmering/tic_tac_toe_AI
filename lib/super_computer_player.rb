@@ -17,7 +17,7 @@ class SuperComputerPlayer < ComputerPlayer
     return node.prev_move_pos if node
 
 
-    raise "Can't find winning or drawing move!"
+    raise "Looks like I am going to lose!"
   end
 end
 
